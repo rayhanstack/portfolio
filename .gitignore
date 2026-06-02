@@ -1,0 +1,36 @@
+/vendor
+/node_modules
+/public/build
+/public/hot
+
+# Environment files
+.env
+
+# Laravel logs
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+
+# IDE files
+.idea
+.vscode
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.phpunit.result.cache
+
+# Composer
+composer.lock
+
+# NPM
+npm-debug.log
+yarn-error.log
+
+# Laravel Pint
+.pint.cache
