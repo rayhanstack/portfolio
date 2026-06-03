@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\PushSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Frontend Routes ─────────────────────────────────────────────────────────
@@ -119,4 +120,24 @@ Route::prefix('admin')
 
     // Logout
     Route::post('/logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+    // ── Push Notifications (NEW) ──────────────────────────────────────────────
+    Route::prefix('push')->name('push.')->group(function () {
+        // Returns VAPID public key for PushManager.subscribe()
+        Route::get('vapid-public-key',        [PushSubscriptionController::class, 'vapidPublicKey'])->name('vapid-key');
+        // Save browser push subscription
+        Route::post('subscribe',              [PushSubscriptionController::class, 'subscribe'])->name('subscribe');
+        // Remove browser push subscription
+        Route::post('unsubscribe',            [PushSubscriptionController::class, 'unsubscribe'])->name('unsubscribe');
+        // Check if current browser is subscribed
+        Route::get('status',                  [PushSubscriptionController::class, 'status'])->name('status');
+        // Send test push notification to self
+        Route::post('test',                   [PushSubscriptionController::class, 'test'])->name('test');
+        // In-app bell: list database notifications
+        Route::get('notifications',           [PushSubscriptionController::class, 'notifications'])->name('notifications');
+        // Mark one notification read
+        Route::post('notifications/{id}/read',[PushSubscriptionController::class, 'markRead'])->name('notifications.read');
+        // Mark all read
+        Route::post('notifications/mark-all-read', [PushSubscriptionController::class, 'markAllRead'])->name('notifications.mark-all-read');
+    });
 });

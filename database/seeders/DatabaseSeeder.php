@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
     {
         // ─── Admin User ───────────────────────────────────────────────────────
         User::firstOrCreate(
-            ['email' => 'admin@portfolio.com'],
+            ['email' => 'admin@gmail.com'],
             [
                 'name'     => 'Admin',
                 'password' => Hash::make('password'),

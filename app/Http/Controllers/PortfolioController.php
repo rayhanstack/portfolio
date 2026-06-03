@@ -17,8 +17,12 @@ use App\Models\ContactInfo;
 use App\Models\SeoSetting;
 use App\Models\Setting;
 use App\Models\ContactMessage;
+use App\Events\NewContactMessage;
+use App\Notifications\NewMessageNotification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Notification;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -134,13 +138,24 @@ class PortfolioController extends Controller
             'message' => ['required', 'string', 'min:10', 'max:5000'],
         ]);
 
-        ContactMessage::create([
+       $message = ContactMessage::create([
             ...$validated,
             'ip_address' => $request->ip(),
         ]);
 
         // Optionally: send notification email to admin
         // Mail::to(config('mail.admin_email'))->send(new ContactNotification($validated));
+
+        // ── 1. Real-time broadcast via Laravel Echo (Pusher/Reverb) ──────────
+        // Instantly updates the admin bell badge if the tab is open.
+        // Requires: BROADCAST_DRIVER=pusher or reverb in .env
+        broadcast(new NewContactMessage($message))->toOthers();
+
+        // ── 2. Web Push + Database notification to all admin users ────────────
+        // Sends a browser push notification even when the admin tab is closed.
+        // Queued so it doesn't block the HTTP response.
+        $admins = User::all(); // or: User::where('is_admin', true)->get()
+        Notification::send($admins, new NewMessageNotification($message));
 
         return response()->json(['message' => 'Message sent successfully.'], 201);
     }
