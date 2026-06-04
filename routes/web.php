@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\SkillController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ExperienceController;
-use App\Http\Controllers\Admin\EducationController;
-use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\CertificationController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\SeoController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SocialLinkController;
-use App\Http\Controllers\Admin\ContactInfoController;
-use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CertificationController;
+use App\Http\Controllers\Admin\ContactInfoController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PushSubscriptionController;
+use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\SocialLinkController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Frontend Routes ─────────────────────────────────────────────────────────
@@ -26,8 +27,8 @@ Route::get('/sitemap.xml', [PortfolioController::class, 'sitemap'])->name('sitem
 
 // ─── Auth Routes (Breeze/Jetstream or custom) ────────────────────────────────
 Route::middleware('guest')->group(function () {
-    Route::get('/admin/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('/admin/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store']);
+    Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
 });
 
 // ─── Admin Routes ─────────────────────────────────────────────────────────────
@@ -119,7 +120,7 @@ Route::prefix('admin')
     Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
 
     // Logout
-    Route::post('/logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     // ── Push Notifications (NEW) ──────────────────────────────────────────────
     Route::prefix('push')->name('push.')->group(function () {
