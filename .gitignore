@@ -2,35 +2,50 @@
 /node_modules
 /public/build
 /public/hot
+/public/storage
 
 # Environment files
 .env
+.env.backup
+.env.production
+.env.*.local
 
-# Laravel logs
+# Laravel storage (keep directory structure, ignore contents)
 /storage/*.key
-/storage/logs/*
+/storage/logs/*.log
 /storage/framework/cache/*
 /storage/framework/sessions/*
 /storage/framework/testing/*
 /storage/framework/views/*
+/storage/app/public/*
+
+# Keep .gitkeep files so empty dirs are preserved in git
+!.gitkeep
 
 # IDE files
 .idea
 .vscode
+*.swp
+*.swo
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Testing
 .phpunit.result.cache
+.phpunit.cache/
 
-# Composer
-composer.lock
-
-# NPM
-npm-debug.log
+# Logs
+*.log
+npm-debug.log*
 yarn-error.log
 
 # Laravel Pint
 .pint.cache
+
+# Local dev environment
+Homestead.json
+Homestead.yaml
+auth.json
