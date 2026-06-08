@@ -9,7 +9,6 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property boolean $is_active
      * @property array|null $counters
-     * @property string|null $resume_file
      * @property string $freelance_status
      * @property string|null $languages
      * @property string|null $date_of_birth
@@ -18,12 +17,12 @@ namespace App\Models {
      * @property string|null $phone
      * @property string|null $email
      * @property string $bio
-     * @property string|null $profile_image
      * @property string $full_name
      * @property int $id
+     * @property-read mixed $profile_image
+     * @property-read mixed $resume_file
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereFullName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereProfileImage($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereBio($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereEmail($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About wherePhone($value)
@@ -32,7 +31,6 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereDateOfBirth($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereLanguages($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereFreelanceStatus($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereResumeFile($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereCounters($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereIsActive($value)
      * @method static \Illuminate\Database\Eloquent\Builder<About>|About whereCreatedAt($value)

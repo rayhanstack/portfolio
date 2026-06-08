@@ -3,6 +3,7 @@
     <section id="about" class="section-padding">
         <div class="container-max">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
+
                 <!-- Image -->
                 <div class="relative" data-aos="fade-right">
                     <div class="relative w-full max-w-md mx-auto">
@@ -16,10 +17,18 @@
                             />
                             <div v-else class="w-full h-full bg-gradient-to-br from-primary-500 to-accent-purple flex items-center justify-center text-8xl">👤</div>
                         </div>
-                        <!-- Experience badge -->
-                        <div class="absolute -bottom-5 -right-5 glass-card p-4 rounded-2xl border border-primary-500/20 shadow-glow">
-                            <div class="text-3xl font-display font-bold text-primary-600 dark:text-primary-400">5+</div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">Years Experience</div>
+
+                        <!-- Experience badge — dynamic, not hardcoded -->
+                        <div
+                            v-if="experienceCounter"
+                            class="absolute -bottom-5 -right-5 glass-card p-4 rounded-2xl border border-primary-500/20 shadow-glow"
+                        >
+                            <div class="text-3xl font-display font-bold text-primary-600 dark:text-primary-400">
+                                {{ experienceCounter.value }}{{ experienceCounter.suffix }}
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                {{ experienceCounter.label }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +41,7 @@
                     </h2>
                     <p class="section-subtitle mb-8 whitespace-pre-line">{{ about?.bio }}</p>
 
-                    <!-- Info grid -->
+                    <!-- Info grid — includes date_of_birth -->
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div v-for="item in infoItems" :key="item.label" class="flex flex-col gap-0.5">
                             <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">{{ item.label }}</span>
@@ -49,13 +58,19 @@
                     </a>
 
                     <!-- Counters -->
-                    <div v-if="about?.counters?.length" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 pt-8 border-t border-gray-100 dark:border-white/5">
+                    <div
+                        v-if="about?.counters?.length"
+                        class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 pt-8 border-t border-gray-100 dark:border-white/5"
+                    >
                         <div v-for="counter in about.counters" :key="counter.label" class="text-center">
-                            <div class="text-3xl font-display font-bold gradient-text">{{ counter.value }}{{ counter.suffix }}</div>
+                            <div class="text-3xl font-display font-bold gradient-text">
+                                {{ counter.value }}{{ counter.suffix }}
+                            </div>
                             <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ counter.label }}</div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -63,13 +78,29 @@
 
 <script setup>
 import { computed } from 'vue'
+
 const props = defineProps({ about: { type: Object, default: null } })
+
+// Info grid — now includes date_of_birth which was missing before
 const infoItems = computed(() => props.about ? [
-    { label: 'Name',      value: props.about.full_name     },
-    { label: 'Email',     value: props.about.email         },
-    { label: 'Phone',     value: props.about.phone         },
-    { label: 'Location',  value: props.about.location      },
-    { label: 'Languages', value: props.about.languages     },
-    { label: 'Available', value: props.about.freelance_status },
+    { label: 'Name',        value: props.about.full_name      },
+    { label: 'Email',       value: props.about.email          },
+    { label: 'Phone',       value: props.about.phone          },
+    { label: 'Location',    value: props.about.location       },
+    { label: 'Birthday',    value: props.about.date_of_birth  },
+    { label: 'Nationality', value: props.about.nationality    },
+    { label: 'Languages',   value: props.about.languages      },
+    { label: 'Freelance',   value: props.about.freelance_status },
 ] : [])
+
+// Pick the first counter whose label looks like "experience" to drive the image badge
+// Falls back to the first counter if none match, so the badge is never hardcoded
+const experienceCounter = computed(() => {
+    const counters = props.about?.counters
+    if (!counters?.length) return null
+    return (
+        counters.find(c => /experience/i.test(c.label)) ||
+        counters[0]
+    )
+})
 </script>
