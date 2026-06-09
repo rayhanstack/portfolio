@@ -78,30 +78,101 @@ class DatabaseSeeder extends Seeder
 
         // ─── Skills ───────────────────────────────────────────────────────────
         $skills = [
-            ['name' => 'Laravel',       'category' => 'Backend',     'percentage' => 95, 'emoji' => '🔴', 'is_featured' => true,  'sort_order' => 1],
-            ['name' => 'Vue.js',        'category' => 'Frontend',    'percentage' => 90, 'emoji' => '💚', 'is_featured' => true,  'sort_order' => 2],
-            ['name' => 'PHP',           'category' => 'Backend',     'percentage' => 92, 'emoji' => '🐘', 'is_featured' => false, 'sort_order' => 3],
-            ['name' => 'JavaScript',    'category' => 'Frontend',    'percentage' => 88, 'emoji' => '💛', 'is_featured' => true,  'sort_order' => 4],
-            ['name' => 'MySQL',         'category' => 'Database',    'percentage' => 85, 'emoji' => '🗄️', 'is_featured' => false, 'sort_order' => 5],
-            ['name' => 'React.js',      'category' => 'Frontend',    'percentage' => 75, 'emoji' => '⚛️', 'is_featured' => false, 'sort_order' => 6],
-            ['name' => 'Tailwind CSS',  'category' => 'Frontend',    'percentage' => 92, 'emoji' => '🎨', 'is_featured' => false, 'sort_order' => 7],
-            ['name' => 'Docker',        'category' => 'DevOps',      'percentage' => 70, 'emoji' => '🐳', 'is_featured' => false, 'sort_order' => 8],
-            ['name' => 'AWS',           'category' => 'DevOps',      'percentage' => 65, 'emoji' => '☁️', 'is_featured' => false, 'sort_order' => 9],
-            ['name' => 'Git',           'category' => 'Tools',       'percentage' => 90, 'emoji' => '📦', 'is_featured' => false, 'sort_order' => 10],
-            ['name' => 'Communication', 'category' => 'Soft Skills', 'percentage' => 88, 'emoji' => '💬', 'is_featured' => true,  'sort_order' => 11],
-            ['name' => 'Problem Solving','category' => 'Soft Skills','percentage' => 92, 'emoji' => '🧩', 'is_featured' => true,  'sort_order' => 12],
+            ['name' => 'Laravel',          'category' => 'Backend',     'percentage' => 95, 'emoji' => '🚀', 'is_featured' => true,  'sort_order' => 1],
+            ['name' => 'PHP',              'category' => 'Backend',     'percentage' => 92, 'emoji' => '🐘', 'is_featured' => true,  'sort_order' => 2],
+
+            ['name' => 'Vue.js',           'category' => 'Frontend',    'percentage' => 90, 'emoji' => '💚', 'is_featured' => true,  'sort_order' => 3],
+            ['name' => 'JavaScript',       'category' => 'Frontend',    'percentage' => 88, 'emoji' => '🟨', 'is_featured' => true,  'sort_order' => 4],
+            ['name' => 'React.js',         'category' => 'Frontend',    'percentage' => 75, 'emoji' => '⚛️', 'is_featured' => false, 'sort_order' => 5],
+            ['name' => 'Tailwind CSS',     'category' => 'Frontend',    'percentage' => 75, 'emoji' => '🌬️', 'is_featured' => false, 'sort_order' => 6],
+            ['name' => 'Bootstrap',        'category' => 'Frontend',    'percentage' => 80, 'emoji' => '🟣', 'is_featured' => false, 'sort_order' => 7],
+
+            ['name' => 'MySQL',            'category' => 'Database',    'percentage' => 85, 'emoji' => '🐬', 'is_featured' => false, 'sort_order' => 8],
+            ['name' => 'SQLite',           'category' => 'Database',    'percentage' => 80, 'emoji' => '🪶', 'is_featured' => false, 'sort_order' => 9],
+            ['name' => 'PostgreSQL',       'category' => 'Database',    'percentage' => 75, 'emoji' => '🐘', 'is_featured' => false, 'sort_order' => 10],
+
+            ['name' => 'Git',              'category' => 'Tools',       'percentage' => 90, 'emoji' => '🔀', 'is_featured' => false, 'sort_order' => 11],
+            ['name' => 'GitHub',           'category' => 'Tools',       'percentage' => 90, 'emoji' => '🐙', 'is_featured' => false, 'sort_order' => 12],
+            ['name' => 'GitLab',           'category' => 'Tools',       'percentage' => 85, 'emoji' => '🦊', 'is_featured' => false, 'sort_order' => 13],
+
+            ['name' => 'CI/CD',            'category' => 'DevOps',      'percentage' => 50, 'emoji' => '♾️', 'is_featured' => false, 'sort_order' => 14],
+            ['name' => 'Docker',           'category' => 'DevOps',      'percentage' => 30, 'emoji' => '🐳', 'is_featured' => false, 'sort_order' => 15],
+            ['name' => 'AWS',              'category' => 'DevOps',      'percentage' => 25, 'emoji' => '☁️', 'is_featured' => false, 'sort_order' => 16],
+            ['name' => 'Microservices',    'category' => 'DevOps',      'percentage' => 20, 'emoji' => '🧩', 'is_featured' => false, 'sort_order' => 17],
+            ['name' => 'Kubernetes',       'category' => 'DevOps',      'percentage' => 10, 'emoji' => '⚙️', 'is_featured' => false, 'sort_order' => 18],
+
+            ['name' => 'Communication',   'category' => 'Soft Skills', 'percentage' => 99, 'emoji' => '💬', 'is_featured' => true,  'sort_order' => 19],
+            ['name' => 'Problem Solving', 'category' => 'Soft Skills', 'percentage' => 80, 'emoji' => '🧠', 'is_featured' => true,  'sort_order' => 20],
+
+            ['name' => 'Prompt Engineering', 'category' => 'AI & Automation', 'percentage' => 80, 'emoji' => '🧠', 'is_featured' => true,  'sort_order' => 21],
+            ['name' => 'OpenAI API',          'category' => 'AI & Automation', 'percentage' => 75, 'emoji' => '🤖', 'is_featured' => true,  'sort_order' => 22],
+            ['name' => 'Claude API',          'category' => 'AI & Automation', 'percentage' => 70, 'emoji' => '💡', 'is_featured' => false, 'sort_order' => 23],
+            ['name' => 'AI Chatbot Development','category' => 'AI & Automation', 'percentage' => 70, 'emoji' => '🤖', 'is_featured' => true, 'sort_order' => 24],
+            ['name' => 'Workflow Automation', 'category' => 'AI & Automation', 'percentage' => 65, 'emoji' => '⚡', 'is_featured' => false, 'sort_order' => 25],
+            ['name' => 'MCP (Model Context Protocol)', 'category' => 'AI & Automation', 'percentage' => 50, 'emoji' => '🔌', 'is_featured' => false, 'sort_order' => 26],
+            ['name' => 'LlamaIndex',                  'category' => 'AI & Automation', 'percentage' => 50, 'emoji' => '🦙', 'is_featured' => false, 'sort_order' => 27],
+            ['name' => 'Ollama',                      'category' => 'AI & Automation', 'percentage' => 50, 'emoji' => '🦙', 'is_featured' => false, 'sort_order' => 28],
+            ['name' => 'Agentic AI',                  'category' => 'AI & Automation', 'percentage' => 50, 'emoji' => '🕵️', 'is_featured' => false, 'sort_order' => 29],
         ];
 
         foreach ($skills as $s) Skill::create($s);
 
         // ─── Services ─────────────────────────────────────────────────────────
         $services = [
-            ['title' => 'Web Development',     'description' => 'Full-stack web applications built with Laravel, Vue.js, and modern technologies. Scalable, secure, and performant.', 'icon_svg' => '🌐', 'sort_order' => 1],
-            ['title' => 'API Development',     'description' => 'RESTful and GraphQL APIs designed for performance and scalability. Comprehensive documentation and testing included.', 'icon_svg' => '🔌', 'sort_order' => 2],
-            ['title' => 'UI/UX Design',        'description' => 'Beautiful, intuitive interfaces that users love. From wireframes to pixel-perfect implementations with Figma and Tailwind.', 'icon_svg' => '🎨', 'sort_order' => 3],
-            ['title' => 'Database Design',     'description' => 'Optimized database schemas, migrations, and query optimization for MySQL, PostgreSQL, and NoSQL databases.', 'icon_svg' => '🗄️', 'sort_order' => 4],
-            ['title' => 'Performance Optimization', 'description' => 'Speed up your existing applications with caching strategies, query optimization, and CDN configuration.', 'icon_svg' => '⚡', 'sort_order' => 5],
-            ['title' => 'Consulting',          'description' => 'Technical consultation for your project — architecture planning, code reviews, and best practice guidance.', 'icon_svg' => '💼', 'sort_order' => 6],
+            [
+                'title' => 'Full Stack Web Development',
+                'description' => 'Build modern, scalable, and secure web applications using Laravel, Vue.js, React, and industry best practices. From concept to deployment.',
+                'icon_svg' => '🚀',
+                'sort_order' => 1
+            ],
+
+            [
+                'title' => 'Custom API Development',
+                'description' => 'Design and develop robust RESTful and GraphQL APIs with authentication, documentation, testing, and third-party integrations.',
+                'icon_svg' => '🔌',
+                'sort_order' => 2
+            ],
+
+            [
+                'title' => 'AI Integration & Chatbot Development',
+                'description' => 'Integrate AI capabilities into your applications using OpenAI and Claude APIs, including intelligent chatbots, content generation, and workflow automation.',
+                'icon_svg' => '🤖',
+                'sort_order' => 3
+            ],
+
+            [
+                'title' => 'Database Architecture & Optimization',
+                'description' => 'Design efficient database structures and optimize performance for MySQL, PostgreSQL, and SQLite applications.',
+                'icon_svg' => '🗄️',
+                'sort_order' => 4
+            ],
+
+            [
+                'title' => 'Performance Optimization',
+                'description' => 'Improve application speed through caching strategies, query optimization, lazy loading, asset optimization, and performance audits.',
+                'icon_svg' => '⚡',
+                'sort_order' => 5
+            ],
+
+            [
+                'title' => 'Deployment & DevOps Support',
+                'description' => 'Deploy and maintain applications using Docker, CI/CD pipelines, Git workflows, Linux servers, and cloud platforms.',
+                'icon_svg' => '🐳',
+                'sort_order' => 6
+            ],
+
+            [
+                'title' => 'Technical Consulting',
+                'description' => 'Get expert guidance on system architecture, code reviews, technology selection, project planning, and software best practices.',
+                'icon_svg' => '💼',
+                'sort_order' => 7
+            ],
+            [ 
+                'title' => 'Bug Fixing & Maintenance',
+                'description' => 'Diagnose and resolve issues in existing applications, including Laravel, Vue.js, JavaScript, API integrations, database errors, performance bottlenecks, and production bugs. Ongoing maintenance and support included.',
+                'icon_svg' => '🛠️',
+                'sort_order' => 8
+            ],
         ];
 
         foreach ($services as $s) Service::create(array_merge($s, ['is_active' => true]));
