@@ -15,7 +15,6 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\SocialLinkController;
-use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
@@ -82,12 +81,6 @@ Route::prefix('admin')
     Route::post('/educations', [EducationController::class, 'store'])->name('educations.store');
     Route::put('/educations/{education}', [EducationController::class, 'update'])->name('educations.update');
     Route::delete('/educations/{education}', [EducationController::class, 'destroy'])->name('educations.destroy');
-
-    // Testimonials
-    Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
-    Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
-    Route::put('/testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('testimonials.update');
-    Route::delete('/testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
     // Certifications
     Route::get('/certifications', [CertificationController::class, 'index'])->name('certifications.index');

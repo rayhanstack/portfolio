@@ -115,7 +115,7 @@
           </h1>
 
           <div class="ml-auto flex items-center gap-3">
-            <!-- Notification Bell (NEW) -->
+            <!-- Notification Bell -->
             <NotificationBell />
 
             <!-- Theme toggle -->
@@ -205,7 +205,7 @@
 import { ref, computed } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import { useThemeStore } from "@/Stores/themeStore";
-import NotificationBell from "@/Components/Admin/NotificationBell.vue"; // NEW
+import NotificationBell from "@/Components/Admin/NotificationBell.vue";
 
 const themeStore = useThemeStore();
 const page = usePage();
@@ -224,7 +224,6 @@ const pageTitle = computed(() => {
     "/admin/projects": "Projects",
     "/admin/experiences": "Experience",
     "/admin/educations": "Education",
-    "/admin/testimonials": "Testimonials",
     "/admin/certifications": "Certifications",
     "/admin/social-links": "Social Links",
     "/admin/contact-info": "Contact Info",
@@ -254,8 +253,8 @@ const navGroups = computed(() => [
       { href: "/admin/projects", icon: "🚀", label: "Projects" },
       { href: "/admin/experiences", icon: "💼", label: "Experience" },
       { href: "/admin/educations", icon: "🎓", label: "Education" },
-      { href: "/admin/testimonials", icon: "💬", label: "Testimonials" },
       { href: "/admin/certifications", icon: "🏆", label: "Certifications" },
+      // Testimonials removed
     ],
   },
   {

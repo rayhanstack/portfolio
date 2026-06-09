@@ -10,7 +10,6 @@ use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\Experience;
 use App\Models\Education;
-use App\Models\Testimonial;
 use App\Models\Certification;
 use App\Models\SocialLink;
 use App\Models\ContactInfo;
@@ -98,10 +97,6 @@ class PortfolioController extends Controller
                 'educations' => Education::where('is_active', true)
                     ->orderBy('sort_order')
                     ->orderByDesc('start_year')
-                    ->get(),
-
-                'testimonials' => Testimonial::where('is_active', true)
-                    ->orderBy('sort_order')
                     ->get(),
 
                 'certifications' => Certification::where('is_active', true)

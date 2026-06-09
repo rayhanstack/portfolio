@@ -37,9 +37,6 @@
         <!-- 7. Education Section -->
         <EducationSection :educations="educations" />
 
-        <!-- 8. Testimonials Section -->
-        <TestimonialsSection :testimonials="testimonials" />
-
         <!-- 9. Certifications Section -->
         <CertificationsSection :certifications="certifications" />
 
@@ -61,7 +58,6 @@ import ServicesSection      from '@/Components/Frontend/ServicesSection.vue'
 import ProjectsSection      from '@/Components/Frontend/ProjectsSection.vue'
 import ExperienceSection    from '@/Components/Frontend/ExperienceSection.vue'
 import EducationSection     from '@/Components/Frontend/EducationSection.vue'
-import TestimonialsSection  from '@/Components/Frontend/TestimonialsSection.vue'
 import CertificationsSection from '@/Components/Frontend/CertificationsSection.vue'
 import ContactSection       from '@/Components/Frontend/ContactSection.vue'
 
@@ -93,7 +89,6 @@ onMounted(() => {
         projects:      props.projects,
         experiences:   props.experiences,
         educations:    props.educations,
-        testimonials:  props.testimonials,
         certifications: props.certifications,
         contactInfo:   props.contactInfo,
         socialLinks:   props.socialLinks,
